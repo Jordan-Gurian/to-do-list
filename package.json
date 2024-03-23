@@ -1,0 +1,24 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "Dynamic to-do list that allows user to add to-do items to specific projects. Will utilize the following tools:",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "keywords": [],
+  "author": "Jordan Gurian",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.10.0",
+    "css-minimizer-webpack-plugin": "^6.0.0",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.8.1",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4",
+    "webpack-merge": "^5.10.0"
+  }
+}
