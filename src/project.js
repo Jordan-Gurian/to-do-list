@@ -1,3 +1,5 @@
+import { compareAsc, format } from "date-fns";
+
 export default function Project(title) {
     let todoList = [];
 
@@ -9,11 +11,19 @@ export default function Project(title) {
         const itemIndex = todoList.indexOf(todo);
         todoList.splice(itemIndex, 1)
     }
-    
+
     const moveTodo = function(todo, destProject) {
         destProject.addTodo(todo);
         this.deleteTodo(todo);
     }
 
-    return { title, todoList, addTodo, deleteTodo, moveTodo}
+    const orderByDate = function() {
+        todoList.sort(({due: a}, {due: b}) => compareAsc(a,b))
+    }
+
+    const orderByPriority = function() {
+        todoList.sort(({priority: a}, {priority: b}) => b-a)
+    }
+
+    return { title, todoList, addTodo, deleteTodo, moveTodo, orderByDate, orderByPriority}
 }
