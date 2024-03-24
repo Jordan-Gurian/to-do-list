@@ -65,4 +65,21 @@ export default function domManager() {
         dialogTodo.close();
 
     });
+
+
+    const orderByPriorityButton = document.querySelector('.order-by-priority');
+    orderByPriorityButton.addEventListener('click', () => {
+        sampleProj.orderByPriority();
+        deleteArticle();
+        loadProject(sampleProj)
+    })
+
+
+    const orderByDueButton = document.querySelector('.order-by-due');
+    orderByDueButton.addEventListener('click', () => {
+        sampleProj.orderByDate();
+        deleteArticle();
+        loadProject(sampleProj)
+    })
+
 }
