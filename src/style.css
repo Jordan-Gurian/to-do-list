@@ -1,5 +1,79 @@
+:root {
+    --font-for-all: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
+    --standard-gap: 10px;
+    --standard-padding: 20px;
+    --standard-border-radius: 10px;
+    --header-background-color: teal;
+    --sidebar-background-color: brown;
+    --article-background-color: antiquewhite;
+    --todo-background-color: green;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--font-for-all);
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+    grid-template-columns: 1fr 4fr;
+}
+
+header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(4*var(--standard-gap));
+    padding: var(--standard-padding);
+    background-color: var(--header-background-color);
+    font-size: 2rem;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--standard-gap);
+    padding: var(--standard-padding);
+    background-color: var(--sidebar-background-color);
+}
+
+.sidebar > h3 {
+    font-size: 1.5rem;
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--standard-gap);
+    padding: var(--standard-padding);
+    flex: wrap;
+    background-color: var(--article-background-color);
+    font-size: 1.5rem;
+}
+
+.todo {
+    background-color: var(--todo-background-color);
+    border-radius: var(--standard-border-radius);
+    padding: calc(var(--standard-padding)/2);
+    box-shadow: 2px 2px 5px var(--todo-background-color);
+}
+
+.description,
+.due,
+.priority {
+    font-size: 1rem;
+}
+
+.new-todo,
+.new-project {
+    height: 30px;
+    width: 120px;
+    border: 0;
+    font-size: 1rem;
+    border-radius: var(--standard-border-radius);
 }
