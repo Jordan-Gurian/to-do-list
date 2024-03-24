@@ -8,25 +8,30 @@
 <body>
     <header>
         <dialog class="dialog-todo">
-            <label for="todo-title">Name
-                <input  type="text" id="todo-title" required>
-            </label>
-            <label for="todo-description">Description
-                <input type="text" id="todo-description">
-            </label>
-            <label for="todo-due">Due Date
-                <input type="date" id="todo-due" required>
-            </label>
-            <label for="todo-priority">Priority
-                <input type="number" id="todo-priority" min=1 max=5 required> 
-            </label>
-            <button type="submit" class="close-todo">Submit</button>
+            <form action="" method="dialog" class="todo-form">
+                <label for="todo-title">Name
+                    <input  type="text" id="todo-title" required>
+                </label>
+                <label for="todo-description">Description
+                    <input type="text" id="todo-description">
+                </label>
+                <label for="todo-due">Due Date
+                    <input type="date" id="todo-due" required>
+                </label>
+                <label for="todo-priority">Priority
+                    <input type="number" id="todo-priority" min=1 max=5 required> 
+                </label>
+                <button type="submit" class="close-todo">Submit</button>
+            </form>
         </dialog>
         <h1>Todo4u</h1>
         <dialog class="dialog-project">
-            <label for="project-input">Project Name</label>
-            <input  type="text" id="project-input" required>
-            <button class="close-project">Close</button>
+            <form action="" method="dialog" class="project-form">
+                <label for="project-input">Project Name
+                    <input  type="text" name="project-input" id="project-input" required>
+                </label>
+                <button type="submit" class="close-project">Close</button>
+            </form>
         </dialog>
         <button class="new-project">Add Project</button>
     </header>
@@ -34,9 +39,12 @@
         <h3>Projects</h3>
     </div>
     <div class="article">
-        <button class="new-todo">Add Todo</button>
-        <button class="order-by-priority">Order By Priority</button>
-        <button class="order-by-due">Order By Date</button>
+        <div class="article-buttons">
+            <button class="new-todo">Add Todo</button>
+            <button class="order-by-priority">Order By Priority</button>
+            <button class="order-by-due">Order By Date</button>   
+        </div>
+
         <div class="content">
         </div>
     </div>

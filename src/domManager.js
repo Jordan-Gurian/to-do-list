@@ -10,6 +10,11 @@ export default function domManager() {
     const sidebar = document.querySelector('.sidebar');
     const addProject = document.querySelector('.new-project');
     const newProject = document.createElement('button');
+    const projectForm = document.querySelector('.project-form')
+    const todoForm = document.querySelector('.todo-form')
+
+
+    newProject.classList.add('.project-button')
     newProject.textContent = 'Default';
     sidebar.appendChild(newProject);
     const thisProject = new Project(newProject.textContent);
@@ -22,15 +27,15 @@ export default function domManager() {
 
 
     addProject.addEventListener('click', () => {
+        projectForm.reset();
         dialogProj.showModal();
     });
 
-    const closeButtonProj = document.querySelector('.close-project');
-
-    closeButtonProj.addEventListener('click', () => {
-        const projectInput = document.querySelector('#project-input');
+    projectForm.onsubmit = function() {
+        const projectInput = document.querySelector('input[name="project-input"]');
         const sidebar = document.querySelector('.sidebar');
         const newProject = document.createElement('button');
+        newProject.classList.add('.project-button')
         newProject.textContent = projectInput.value;
         sidebar.appendChild(newProject);
         const thisProject = new Project(newProject.textContent);
@@ -39,21 +44,18 @@ export default function domManager() {
             loadProject(thisProject)
             sampleProj = thisProject;
         })
-        dialogProj.close();
-    });
+    };
 //////////////////////////////////////////
     const todoButton = document.querySelector('.new-todo');
 
     const dialogTodo = document.querySelector('.dialog-todo');
     
     todoButton.addEventListener('click', () => {
+        todoForm.reset();
         dialogTodo.showModal();
     });
 
-    const closeButtonTodo = document.querySelector('.close-todo');
-
-
-    closeButtonTodo.addEventListener('click', () => {
+    todoForm.onsubmit = function() {
         const itemTitle = document.querySelector('#todo-title');
         const itemDescription = document.querySelector('#todo-description');
         const itemDue = document.querySelector('#todo-due');
@@ -63,8 +65,7 @@ export default function domManager() {
         deleteArticle();
         loadProject(sampleProj)
         dialogTodo.close();
-
-    });
+    };
 
 
     const orderByPriorityButton = document.querySelector('.order-by-priority');

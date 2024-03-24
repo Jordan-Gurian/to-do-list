@@ -75,13 +75,31 @@ header {
     font-size: 1rem;
 }
 
+.new-project,
 .new-todo,
-.new-project {
+.order-by-priority,
+.order-by-due {
     height: 30px;
     width: 120px;
     border: 0;
     font-size: 1rem;
     border-radius: var(--standard-border-radius);
+}
+
+.article-buttons {
+    display: flex;
+    gap: var(--standard-gap);
+}
+
+button:hover  {
+    cursor: pointer;
+    opacity: .6;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--standard-gap);
 }
 
 dialog::backdrop {
