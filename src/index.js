@@ -4,5 +4,5 @@ import Todo from './todo.js';
 import { compareAsc, format } from "date-fns";
 import domManager from './domManager.js';
 
-
-domManager();
+const dom = new domManager();
+dom.startUp();
