@@ -3,7 +3,7 @@ import Project from './project.js';
 export default function localLoad(param) {
     let allProjects = [];
     const projectsJSON =  localStorage.getItem(param);
-    if (projectsJSON === "undefined") {
+    if (projectsJSON === null) {
         return allProjects
     }
     else {

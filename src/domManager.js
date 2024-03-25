@@ -14,30 +14,20 @@ export default function domManager() {
     const projectForm = document.querySelector('.project-form')
     const todoForm = document.querySelector('.todo-form')
     let myProjects = localLoad("myProjects");
-    let sampleProj = myProjects[0];
+    let sampleProj;
 
     const startUp = function () {
         if (myProjects.length === 0) {
-            newProject.classList.add('.project-button')
-            newProject.textContent = 'Default';
-            sidebar.appendChild(newProject);
-            const thisProject = new Project(newProject.textContent);
+            const thisProject = new Project('Default');
             myProjects.push(thisProject);
             localSave("myProjects", myProjects);
-    
-            let sampleProj = thisProject;
-            newProject.addEventListener('click', () => {
-                deleteArticle();
-                loadProject(thisProject)
-                sampleProj = thisProject;
-        })
+        }
 
-    }
-
-    for (let project of myProjects) { 
-        createProjectButton(project);
-    }
-    loadProject(sampleProj);
+        for (let project of myProjects) { 
+            createProjectButton(project);
+        }
+        sampleProj = myProjects[0];
+        loadProject(sampleProj);
     
     }
 
@@ -52,12 +42,9 @@ export default function domManager() {
         newProject.classList.add('.project-button')
         newProject.textContent = project.title;
 
-        const deleteProject = document.createElement('button');
-        deleteProject.classList.add('.delete-project')
-        deleteProject.textContent = "Delete";
+
 
         sidebar.appendChild(newProject);
-        sidebar.appendChild(deleteProject);
 
         newProject.addEventListener('click', () => {
             deleteArticle();
@@ -66,14 +53,28 @@ export default function domManager() {
             sampleProj = project;
         });
 
-        deleteProject.addEventListener('click', () => {
-            removeProjectFromList(project);
-            newProject.remove();
-            deleteProject.remove();
-            deleteArticle();
-            loadProject(myProjects[0]);
-            localSave("myProjects", myProjects);
-        })
+        if (project.title != "Default") {
+            const deleteProject = document.createElement('button');
+            deleteProject.classList.add('.delete-project');
+            deleteProject.textContent = "Delete";
+            sidebar.appendChild(deleteProject);
+
+            deleteProject.addEventListener('click', () => {
+                removeProjectFromList(project);
+                newProject.remove();
+                deleteProject.remove();
+                deleteArticle();
+                loadProject(myProjects[0]);
+                localSave("myProjects", myProjects);
+            });
+        }
+        else {
+            const emptyDiv = document.createElement('div');
+            emptyDiv.classList.add('.delete-project');
+            emptyDiv.textContent = "";
+            sidebar.appendChild(emptyDiv);
+        }
+
 
     }
     
