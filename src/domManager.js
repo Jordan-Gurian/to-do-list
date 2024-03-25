@@ -8,7 +8,7 @@ import localLoad from './localLoad.js';
 
 export default function domManager() {
     const dialogProj = document.querySelector('.dialog-project');
-    const sidebar = document.querySelector('.sidebar');
+    const projectTabs = document.querySelector('.project-tab');
     const addProject = document.querySelector('.new-project');
     const newProject = document.createElement('button');
     const projectForm = document.querySelector('.project-form')
@@ -37,14 +37,13 @@ export default function domManager() {
     }
 
     const createProjectButton = function(project) {
-        const sidebar = document.querySelector('.sidebar');
         const newProject = document.createElement('button');
-        newProject.classList.add('.project-button')
+        newProject.classList.add('project-button')
         newProject.textContent = project.title;
 
 
 
-        sidebar.appendChild(newProject);
+        projectTabs.appendChild(newProject);
 
         newProject.addEventListener('click', () => {
             deleteArticle();
@@ -55,9 +54,9 @@ export default function domManager() {
 
         if (project.title != "Default") {
             const deleteProject = document.createElement('button');
-            deleteProject.classList.add('.delete-project');
+            deleteProject.classList.add('project-button');
             deleteProject.textContent = "Delete";
-            sidebar.appendChild(deleteProject);
+            projectTabs.appendChild(deleteProject);
 
             deleteProject.addEventListener('click', () => {
                 removeProjectFromList(project);
@@ -70,9 +69,10 @@ export default function domManager() {
         }
         else {
             const emptyDiv = document.createElement('div');
-            emptyDiv.classList.add('.delete-project');
+            emptyDiv.classList.add('project-button');
+            emptyDiv.classList.add('empty-div');
             emptyDiv.textContent = "";
-            sidebar.appendChild(emptyDiv);
+            projectTabs.appendChild(emptyDiv);
         }
 
 
